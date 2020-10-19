@@ -1,20 +1,22 @@
 import Phaser from 'phaser';
 
+import System from './System';
+
 import TempScene from './Scenes/TempScene';
 
 // -----------------------------------------------------
 
 const config = {
-  type: Phaser.AUTO,
-  parent: 'game',
-  width: 640,
-  height: 480,
-  scene: [TempScene],
+  type   : Phaser.AUTO,
+  parent : 'game',
+  width  : System.width,
+  height : System.height,
+  scene  : [TempScene],
   physics: {
     default: 'arcade',
-    arcade: {
-      gravity: { y: 0 }
-    }
+    arcade : {
+      gravity: { y: 0 },
+    },
   },
 };
 
