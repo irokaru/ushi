@@ -18,6 +18,11 @@ const config = {
       gravity: { y: 0 },
     },
   },
+  scale: {
+    mode      : Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+  autoRound: false,
 };
 
 // -----------------------------------------------------

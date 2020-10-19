@@ -1,8 +1,8 @@
 class System {
   constructor() {
     const values = {
-      width : 640,
-      height: 480,
+      width : 1280,
+      height: 960,
     };
 
     this._setupStaticValues(values);
