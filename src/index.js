@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 
+import System from './System';
+
 import TempScene from './Scenes/TempScene';
 
 // -----------------------------------------------------
@@ -7,14 +9,18 @@ import TempScene from './Scenes/TempScene';
 const config = {
   type: Phaser.AUTO,
   parent: 'game',
-  width: 640,
-  height: 480,
+  width: System.width,
+  height: System.height,
   scene: [TempScene],
   physics: {
     default: 'arcade',
     arcade: {
       gravity: { y: 0 }
     }
+  },
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
   },
 };
 
