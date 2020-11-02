@@ -26,7 +26,7 @@ export default class TitleScene extends Base {
   async update() {
     if (this.$.key.isDown('down')) {
       await Image.fadeOut(this, this.$.title, {duration: 100});
-      await this.delay(2500);
+      await this.sleep(2500);
       this.scene.start('Temp');  // TODO: start main
     }
   }
