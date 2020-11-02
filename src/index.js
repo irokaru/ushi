@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 import System from './System';
 
+import TitleScene from './Scenes/TitleScene';
 import TempScene from './Scenes/TempScene';
 
 // -----------------------------------------------------
@@ -11,7 +12,7 @@ const config = {
   parent: 'game',
   width: System.width,
   height: System.height,
-  scene: [TempScene],
+  scene: [TitleScene, TempScene],
   physics: {
     default: 'arcade',
     arcade: {
