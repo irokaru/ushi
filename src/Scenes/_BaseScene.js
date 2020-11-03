@@ -16,4 +16,12 @@ export default class Base extends Phaser.Scene {
   create() {}
 
   updaate() {}
+
+  /**
+   * @param {integer} time ms
+   * @returns {Promise<any>}
+   */
+  sleep(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
 }

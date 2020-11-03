@@ -2,16 +2,17 @@ import Phaser from 'phaser';
 
 import System from './System';
 
+import TitleScene from './Scenes/TitleScene';
 import TempScene from './Scenes/TempScene';
 
 // -----------------------------------------------------
 
 const config = {
-  type   : Phaser.AUTO,
-  parent : 'game',
-  width  : System.width,
-  height : System.height,
-  scene  : [TempScene],
+  type: Phaser.AUTO,
+  parent: 'game',
+  width: System.width,
+  height: System.height,
+  scene: [TitleScene, TempScene],
   physics: {
     default: 'arcade',
     arcade : {
@@ -22,7 +23,10 @@ const config = {
     mode      : Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  autoRound: false,
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
 };
 
 // -----------------------------------------------------

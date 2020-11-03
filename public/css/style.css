@@ -63,7 +63,17 @@ table {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   background: #1A1A1A;
   color: #FFF;
   font-size: 16px;
+}
+
+#game canvas {
+  display: block;
+  max-height: 100vh;
+  margin: auto;
 }
