@@ -14,7 +14,7 @@ export default class TitleScene extends Base {
 
   preload() {
     // TODO: picture load
-    this.$.key      = new KeyManager(this);
+    this.$.key = new KeyManager(this);
     this.load.image('title', 'assets/images/title.png');
   }
 
@@ -24,10 +24,12 @@ export default class TitleScene extends Base {
   }
 
   async update() {
-    if (this.$.key.isDown('down')) {
-      await Image.fadeOut(this, this.$.title, {duration: 100});
-      await this.sleep(2500);
+    if (this.$.key.isNewDown('down')) {
+      await Image.fadeOut(this, this.$.title, {duration: 200});
+      await this.sleep(400);
       this.scene.start('Temp');  // TODO: start main
     }
+
+    this.$.key.fresh();
   }
 }
