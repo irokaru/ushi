@@ -8,11 +8,11 @@ import TempScene from './Scenes/TempScene';
 // -----------------------------------------------------
 
 const config = {
-  type: Phaser.AUTO,
-  parent: 'game',
-  width: System.width,
-  height: System.height,
-  scene: [TitleScene, TempScene],
+  type   : Phaser.AUTO,
+  parent : 'game',
+  width  : System.width,
+  height : System.height,
+  scene  : [TitleScene, TempScene],
   physics: {
     default: 'arcade',
     arcade : {
@@ -21,10 +21,6 @@ const config = {
   },
   scale: {
     mode      : Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  scale: {
-    mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
 };

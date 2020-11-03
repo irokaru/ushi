@@ -45,7 +45,7 @@ export default class KeyManager {
    * @param {string} keyName
    * @returns {boolean}
    */
-  isNewDown(keyName) {
+  isDownNew(keyName) {
     if (!this._exists(keyName)) {
       throw Error(`not found keyname => ${keyName}`);
     }
