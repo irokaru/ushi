@@ -12,18 +12,19 @@ export default class TitleScene extends Base {
   }
 
   preload() {
-    this.$.key        = new KeyManager(this);
-    this.$.loadImages = ImageUtil.loadImages(this, ImageGroup.title());
+    this.$.key = new KeyManager(this);
+
+    const loadTarget  = Object.assign(ImageGroup.title(), ImageGroup.field());
+    this.$.loadImages = ImageUtil.loadImages(this, loadTarget);
   }
 
   create() {
-    this.$.images = Object.assign(this.$.images, ImageUtil.addImages(this, ImageGroup.title()));
-    // this.$.images = Object.assign(this.$.images, ImageUtil.addImageIterate(this, 'field.load', ImageGroup.fieldPoss()));
+    this.$.images = Object.assign(ImageUtil.addImageIterate(this, 'field.load', ImageGroup.fieldPoss()),  // 道
+                                  ImageUtil.addImages(this, ImageGroup.title()));                         // タイトル系統
   }
 
   async update() {
     if (this.$.key.isDownNew('down') && !this.$.leaveScene) {
-      console.log(ImageGroup.fieldPoss());
       this.$.leaveScene = true;
       await ImageUtil.fadeOut(this, Object.values(this.$.images), {duration: 200});
       await this.sleep(400);

@@ -9,22 +9,22 @@ export default class ImageGroup {
       title: {
         x:    System.width / 2,
         y:    System.height / 6,
-        path: 'assets/images/title.png',
+        path: System.imagePath + 'title.png',
       },
       'desc.main': {
         x:    System.width / 2,
         y:    System.height / 2 + 50,
-        path: 'assets/images/description_main.png'
+        path: System.imagePath + 'description_main.png'
       },
       'desc.start': {
         x:    System.width / 2,
         y:    System.height * 4 / 5 + 50,
-        path: 'assets/images/description_start.png',
+        path: System.imagePath + 'description_start.png',
       },
       'desc.trophy': {
         x:    System.width / 6,
         y:    System.height - 40,
-        path: 'assets/images/description_trophy.png',
+        path: System.imagePath + 'description_trophy.png',
       },
     };
   }
@@ -35,10 +35,10 @@ export default class ImageGroup {
   static field() {
     return {
       'field.load': {
-        path: 'assets/images/field_load.png',
+        path: System.imagePath + 'field_load.png',
       },
       'field.cliff': {
-        path: 'assets/images/field_cliff.png',
+        path: System.imagePath + 'field_cliff.png',
       },
     };
   }
@@ -48,8 +48,8 @@ export default class ImageGroup {
    * @returns {[{x: number, y: number}]}
    */
   static fieldPoss() {
-    const xSize = 40;
-    const ySize = 128;
+    const xSize = 80;
+    const ySize = 560;
     const poss = [];
 
     for(let index = 0; index < System.width / xSize; index++) {

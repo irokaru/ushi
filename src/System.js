@@ -3,6 +3,7 @@ class System {
     const values = {
       width : 1280,
       height: 960,
+      imagePath: 'assets/images/',
     };
 
     this._setupStaticValues(values);
