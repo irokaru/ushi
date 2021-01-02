@@ -4,8 +4,7 @@ import Base from './_BaseScene';
 
 import Image      from '../Util/Image';
 import KeyManager from '../Util/KeyManager';
-
-import System from '../System';
+import ImageGroup from '../Image/ImageGroup';
 
 export default class TitleScene extends Base {
   constructor() {
@@ -14,11 +13,11 @@ export default class TitleScene extends Base {
 
   preload() {
     this.$.key        = new KeyManager(this);
-    this.$.loadImages = Image.loadImages(this, this._initImages());
+    this.$.loadImages = Image.loadImages(this, ImageGroup.title());
   }
 
   create() {
-    this.$.images = Object.assign(this.$.images, Image.addImages(this, this._initImages()));
+    this.$.images = Object.assign(this.$.images, Image.addImages(this, ImageGroup.title()));
   }
 
   async update() {
@@ -30,36 +29,5 @@ export default class TitleScene extends Base {
     }
 
     this.$.key.fresh();
-  }
-
-  // -----------------------------------------------------
-
-  /**
-   * 最初に表示する画像群
-   * @returns {object}
-   */
-  _initImages() {
-    return {
-      title: {
-        x:    System.width / 2,
-        y:    System.height / 6,
-        path: 'assets/images/title.png',
-      },
-      'desc.main': {
-        x:    System.width / 2,
-        y:    System.height / 2 + 50,
-        path: 'assets/images/description_main.png'
-      },
-      'desc.start': {
-        x:    System.width / 2,
-        y:    System.height * 4 / 5 + 50,
-        path: 'assets/images/description_start.png',
-      },
-      'desc.trophy': {
-        x:    System.width / 6,
-        y:    System.height - 40,
-        path: 'assets/images/description_trophy.png',
-      },
-    };
   }
 }
