@@ -1,14 +1,14 @@
 import Validator from 'nonono-validator';
 
-export default class Image {
+export default class ImageUtil {
   /**
    * 画像を一括で読み込むやつ
    * @param {Phaser.scene} scene
    * @param {{key: {path: string}}} images
-   * @returns {Phaser.Loader.LoaderPlugin{}}
+   * @returns {{key: Phaser.Loader.LoaderPlugin}}
    */
   static loadImages(scene, images) {
-    let ret = {};
+    const ret = {};
 
     for (const [key, image] of Object.entries(images)) {
       ret[key] = scene.load.image(key, image.path);
@@ -21,10 +21,10 @@ export default class Image {
    * 読み込ませた画像を一括で表示するやつ
    * @param {Phaser.scene} scene
    * @param {{key: {x: number, y: number},}} images
-   * @returns {Phaser.GameObjects.Image{}}
+   * @returns {{key: Phaser.GameObjects.Image}}
    */
   static addImages(scene, images) {
-    let ret = [];
+    const ret = {};
 
     for (const [key, image] of Object.entries(images)) {
       if (!Validator.hasKeyInObject(image, 'x') || !Validator.hasKeyInObject(image, 'y')) {
