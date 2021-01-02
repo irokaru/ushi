@@ -6,7 +6,11 @@ export default class Base extends Phaser.Scene {
    */
   constructor(config) {
     super(config);
-    this.$ = {};
+    this.$ = {
+      loadImages: {},
+      images:     {},
+      leaveScene: false,
+    };
   }
 
   preload() {
@@ -18,6 +22,7 @@ export default class Base extends Phaser.Scene {
   updaate() {}
 
   /**
+   * 指定msだけ停止する(await必須)
    * @param {integer} time ms
    * @returns {Promise<any>}
    */

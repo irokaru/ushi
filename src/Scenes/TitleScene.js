@@ -1,6 +1,6 @@
 'use strict';
 
-import Base   from './_BaseScene';
+import Base from './_BaseScene';
 
 import Image      from '../Util/Image';
 import KeyManager from '../Util/KeyManager';
@@ -13,23 +13,53 @@ export default class TitleScene extends Base {
   }
 
   preload() {
-    // TODO: picture load
-    this.$.key = new KeyManager(this);
-    this.load.image('title', 'assets/images/title.png');
+    this.$.key        = new KeyManager(this);
+    this.$.loadImages = Image.loadImages(this, this._initImages());
   }
 
   create() {
-    // TODO: picture show and prepare logic
-    this.$.title = this.add.image(System.width / 2, System.height / 4, 'title');
+    this.$.images = Object.assign(this.$.images, Image.addImages(this, this._initImages()));
   }
 
   async update() {
-    if (this.$.key.isDownNew('down')) {
-      await Image.fadeOut(this, this.$.title, {duration: 200});
+    if (this.$.key.isDownNew('down') && !this.$.leaveScene) {
+      this.$.leaveScene = true;
+      await Image.fadeOut(this, Object.values(this.$.images), {duration: 200});
       await this.sleep(400);
       this.scene.start('Temp');  // TODO: start main
     }
 
     this.$.key.fresh();
+  }
+
+  // -----------------------------------------------------
+
+  /**
+   * 最初に表示する画像群
+   * @returns {object}
+   */
+  _initImages() {
+    return {
+      title: {
+        x:    System.width / 2,
+        y:    System.height / 6,
+        path: 'assets/images/title.png',
+      },
+      'desc.main': {
+        x:    System.width / 2,
+        y:    System.height / 2 + 50,
+        path: 'assets/images/description_main.png'
+      },
+      'desc.start': {
+        x:    System.width / 2,
+        y:    System.height * 4 / 5 + 50,
+        path: 'assets/images/description_start.png',
+      },
+      'desc.trophy': {
+        x:    System.width / 6,
+        y:    System.height - 40,
+        path: 'assets/images/description_trophy.png',
+      },
+    };
   }
 }
