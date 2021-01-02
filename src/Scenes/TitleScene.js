@@ -18,10 +18,12 @@ export default class TitleScene extends Base {
 
   create() {
     this.$.images = Object.assign(this.$.images, ImageUtil.addImages(this, ImageGroup.title()));
+    // this.$.images = Object.assign(this.$.images, ImageUtil.addImageIterate(this, 'field.load', ImageGroup.fieldPoss()));
   }
 
   async update() {
     if (this.$.key.isDownNew('down') && !this.$.leaveScene) {
+      console.log(ImageGroup.fieldPoss());
       this.$.leaveScene = true;
       await ImageUtil.fadeOut(this, Object.values(this.$.images), {duration: 200});
       await this.sleep(400);

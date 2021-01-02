@@ -34,12 +34,31 @@ export default class ImageGroup {
    */
   static field() {
     return {
-      load: {
-
+      'field.load': {
+        path: 'assets/images/field_load.png',
       },
-      cliff: {
-
+      'field.cliff': {
+        path: 'assets/images/field_cliff.png',
       },
     };
+  }
+
+  /**
+   * フィールド用画像の初期座標
+   * @returns {[{x: number, y: number}]}
+   */
+  static fieldPoss() {
+    const xSize = 40;
+    const ySize = 128;
+    const poss = [];
+
+    for(let index = 0; index < System.width / xSize; index++) {
+      poss.push({
+        x: index * xSize + xSize / 2,
+        y: System.height - ySize / 2,
+      });
+    }
+
+    return poss;
   }
 }

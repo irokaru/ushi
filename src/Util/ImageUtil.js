@@ -20,7 +20,7 @@ export default class ImageUtil {
   /**
    * 読み込ませた画像を一括で表示するやつ
    * @param {Phaser.scene} scene
-   * @param {{key: {x: number, y: number},}} images
+   * @param {{key: {x: number, y: number}}} images
    * @returns {{key: Phaser.GameObjects.Image}}
    */
   static addImages(scene, images) {
@@ -31,6 +31,23 @@ export default class ImageUtil {
         continue;
       }
       ret[key] = scene.add.image(image.x, image.y, key);
+    }
+
+    return ret;
+  }
+
+  /**
+   * possの数だけ同一の画像を一括で表示するやつ
+   * @param {Phaser.scene} scene
+   * @param {string} image
+   * @param {[{x: number, y: number}]} poss
+   * @returns {{key: Phaser.GameObjects.Image}}
+   */
+  static addImageIterate(scene, key, poss) {
+    const ret = {};
+
+    for (const [index, pos] of poss.entries()) {
+      ret[`${key}${index}`] = scene.add.image(pos.x, pos.y, key);
     }
 
     return ret;
