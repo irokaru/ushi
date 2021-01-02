@@ -27,6 +27,9 @@ export default class Image {
     let ret = [];
 
     for (const [key, image] of Object.entries(images)) {
+      if (!Validator.hasKeyInObject(image, 'x') || !Validator.hasKeyInObject(image, 'y')) {
+        continue;
+      }
       ret[key] = scene.add.image(image.x, image.y, key);
     }
 
