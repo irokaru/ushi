@@ -37,7 +37,8 @@ export default class TitleScene extends Base {
 
       await ImageUtil.fadeOut(this, Object.values(titleImageDatas), {duration: 200});
       await this.sleep(400);
-      this.scene.start('Temp');  // TODO: start main
+
+      this.scene.start('Main');
     }
 
     this.$.key.fresh();
