@@ -7,6 +7,7 @@ import KeyManager from '../Util/KeyManager';
 
 import FieldImages from '../ImageGroup/Field';
 import TitleImages from '../ImageGroup/Title';
+import UshiImages  from '../ImageGroup/Ushi';
 
 export default class TitleScene extends Base {
   constructor() {
@@ -16,12 +17,13 @@ export default class TitleScene extends Base {
   preload() {
     this.$.key = new KeyManager(this);
 
-    const loadTarget  = Object.assign(TitleImages.images(), FieldImages.images());
+    const loadTarget  = Object.assign(TitleImages.images(), FieldImages.images(), UshiImages.images());
     this.$.loadImages = ImageUtil.loadImages(this, loadTarget);
   }
 
   create() {
     this.$.images = Object.assign(ImageUtil.addImageIterate(this, 'field.load', FieldImages.fieldPoss()),  // 道
+                                  ImageUtil.addImages(this, UshiImages.images()),                          // うし
                                   ImageUtil.addImages(this, TitleImages.images()));                        // タイトル系統
   }
 
