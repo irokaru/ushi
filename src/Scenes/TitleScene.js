@@ -24,7 +24,7 @@ export default class TitleScene extends Base {
   }
 
   async update() {
-    if (this.$.key.isDownNew('down') && !this.$.leaveScene) {
+    if (this.$.key.isNewDownArrow() && !this.$.leaveScene) {
       this.$.leaveScene = true;
       await ImageUtil.fadeOut(this, Object.values(this.$.images), {duration: 200});
       await this.sleep(400);

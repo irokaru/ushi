@@ -45,12 +45,28 @@ export default class KeyManager {
    * @param {string} keyName
    * @returns {boolean}
    */
-  isDownNew(keyName) {
+  isNewDown(keyName) {
     if (!this._exists(keyName)) {
       throw Error(`not found keyname => ${keyName}`);
     }
 
-    return !this.keyDowned[keyName] && this.keys[keyName].isDown;
+    return !this.keyDowned[keyName] && this.isDown(keyName);
+  }
+
+  /**
+   * 十字キーが入力されているかどうか
+   * @returns {boolean}
+   */
+  isDownArrow() {
+    return this.isDown('up') || this.isDown('down') || this.isDown('left') || this.isDown('right');
+  }
+
+  /**
+   * 十字キーが新規で入力されているかどうか
+   * @returns {boolean}
+   */
+  isNewDownArrow() {
+    return this.isNewDown('up') || this.isNewDown('down') || this.isNewDown('left') || this.isNewDown('right');
   }
 
   /**

@@ -8,7 +8,7 @@ export default class Base extends Phaser.Scene {
     super(config);
     this.$ = {
       loadImages: {},
-      images:     {},
+      images    : {},
       leaveScene: false,
     };
   }
