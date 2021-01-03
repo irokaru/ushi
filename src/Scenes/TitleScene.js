@@ -4,7 +4,9 @@ import Base from './_BaseScene';
 
 import ImageUtil  from '../Util/ImageUtil';
 import KeyManager from '../Util/KeyManager';
-import ImageGroup from '../Image/ImageGroup';
+
+import FieldImages from '../ImageGroup/Field';
+import TitleImages from '../ImageGroup/Title';
 
 export default class TitleScene extends Base {
   constructor() {
@@ -14,13 +16,13 @@ export default class TitleScene extends Base {
   preload() {
     this.$.key = new KeyManager(this);
 
-    const loadTarget  = Object.assign(ImageGroup.title(), ImageGroup.field());
+    const loadTarget  = Object.assign(TitleImages.images(), FieldImages.images());
     this.$.loadImages = ImageUtil.loadImages(this, loadTarget);
   }
 
   create() {
-    this.$.images = Object.assign(ImageUtil.addImageIterate(this, 'field.load', ImageGroup.fieldPoss()),  // 道
-                                  ImageUtil.addImages(this, ImageGroup.title()));                         // タイトル系統
+    this.$.images = Object.assign(ImageUtil.addImageIterate(this, 'field.load', FieldImages.fieldPoss()),  // 道
+                                  ImageUtil.addImages(this, TitleImages.images()));                        // タイトル系統
   }
 
   async update() {
