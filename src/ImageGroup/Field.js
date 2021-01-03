@@ -22,9 +22,11 @@ export default class Field {
   static fieldPoss() {
     const xSize = 80;
     const ySize = 560;
-    const poss = [];
 
-    for(let index = 0; index < System.width / xSize; index++) {
+    const poss = [];
+    const fieldLen = (System.width + xSize) / xSize;
+
+    for(const index of [...Array(fieldLen).keys()]) {
       poss.push({
         x: index * xSize + xSize / 2,
         y: System.height - ySize / 2,
