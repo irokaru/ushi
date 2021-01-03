@@ -54,6 +54,22 @@ export default class ImageUtil {
   }
 
   /**
+   * キー名を基に画像一覧をフィルタリングする
+   * @param {{key: Phaser.GameObjects.Image}} images
+   * @param {string} keyRgx
+   */
+  static filterImages(images, keyRgx) {
+    const rgx = new RegExp(keyRgx);
+
+    return Object.keys(images)
+                 .filter(key => key.match(rgx))
+                 .reduce((obj, key) => {
+                   obj[key] = images[key];
+                   return obj;
+                 }, {});
+  }
+
+  /**
    * @param {Phaser.scene} scene
    * @param {array|Phaser.Loader.LoaderPlugin.image} imgs
    * @param {object} param

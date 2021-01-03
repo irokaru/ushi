@@ -32,7 +32,10 @@ export default class TitleScene extends Base {
   async update() {
     if (this.$.key.isNewDownArrow() && !this.$.leaveScene) {
       this.$.leaveScene = true;
-      await ImageUtil.fadeOut(this, Object.values(this.$.images), {duration: 200});
+
+      const titleImageDatas = ImageUtil.filterImages(this.$.images, "^title.");
+
+      await ImageUtil.fadeOut(this, Object.values(titleImageDatas), {duration: 200});
       await this.sleep(400);
       this.scene.start('Temp');  // TODO: start main
     }
