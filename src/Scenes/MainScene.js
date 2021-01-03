@@ -5,9 +5,10 @@ import Base from './_BaseScene';
 import ImageUtil  from '../Util/ImageUtil';
 import KeyManager from '../Util/KeyManager';
 
-import BgImages    from '../ImageGroup/BackGround';
-import FieldImages from '../ImageGroup/Field';
-import UshiImages  from '../ImageGroup/Ushi';
+import BgImages     from '../ImageGroup/BackGround';
+import FieldImages  from '../ImageGroup/Field';
+import NumberImages from '../ImageGroup/Number';
+import UshiImages   from '../ImageGroup/Ushi';
 
 export default class MainScene extends Base {
   constructor() {
@@ -19,6 +20,7 @@ export default class MainScene extends Base {
 
   preload() {
     this.$.key = new KeyManager(this);
+    this.$.loadImages = Object.assign(this.$.loadImages, ImageUtil.loadImages(this, NumberImages.images()));
   }
 
   create() {
